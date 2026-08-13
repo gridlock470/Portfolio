@@ -1,0 +1,252 @@
+/* ---------- Page reset ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    color: #29251c;
+    background-color: #fffdf7;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ---------- Navigation ---------- */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e8d8a8;
+    box-shadow: 0 2px 12px rgba(111, 78, 10, 0.1);
+}
+
+nav {
+    width: min(1100px, 90%);
+    min-height: 72px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    color: #9a6b08;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+nav ul a {
+    color: #403823;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+nav ul a:hover,
+nav ul a:focus-visible,
+nav ul a[aria-current="page"] {
+    color: #b07b0b;
+}
+
+
+/* ---------- Main content ---------- */
+
+main {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+
+/* ---------- Introduction ---------- */
+
+.hero {
+    min-height: calc(100vh - 72px);
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.hero > p:first-child {
+    color: #a87308;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.hero h1 {
+    margin-top: 8px;
+    color: #211d14;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.05;
+}
+
+.hero h2 {
+    margin-top: 14px;
+    color: #6b5b34;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.hero h2 + p {
+    max-width: 680px;
+    margin-top: 24px;
+    color: #746a53;
+    font-size: 1.05rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.hero-actions a {
+    padding: 12px 22px;
+    border: 2px solid #b88718;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #b88718;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-actions a:last-child {
+    color: #9a6b08;
+    background-color: transparent;
+}
+
+.hero-actions a:hover,
+.hero-actions a:focus-visible {
+    color: #ffffff;
+    background-color: #8a5f07;
+    transform: translateY(-2px);
+}
+
+
+/* ---------- Areas of interest ---------- */
+
+#highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+#highlights > h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 8px;
+    color: #211d14;
+    font-size: 2rem;
+}
+
+#highlights article {
+    padding: 28px;
+    border: 1px solid #ead9a9;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(111, 78, 10, 0.08);
+}
+
+#highlights h3 {
+    margin-bottom: 12px;
+    color: #a87308;
+}
+
+#highlights p {
+    color: #746a53;
+}
+
+
+/* ---------- Contact ---------- */
+
+#contact {
+    margin: 60px 0 80px;
+    padding: 56px 32px;
+    border-radius: 16px;
+    color: #51472f;
+    background: linear-gradient(135deg, #fff8df, #f4e2a4);
+    border: 1px solid #d5b45c;
+    text-align: center;
+}
+
+#contact h2 {
+    margin-bottom: 12px;
+    color: #2d2617;
+    font-size: 2rem;
+}
+
+#contact p {
+    margin-bottom: 20px;
+}
+
+#contact a {
+    color: #8a5f07;
+    font-weight: 700;
+}
+
+
+/* ---------- Footer ---------- */
+
+footer {
+    padding: 24px;
+    color: #675a3b;
+    background-color: #f5e9c7;
+    border-top: 1px solid #dcc37a;
+    text-align: center;
+}
+
+
+/* ---------- Mobile layout ---------- */
+
+@media (max-width: 768px) {
+    nav {
+        padding: 18px 0;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 20px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 100px 0;
+    }
+
+    #highlights {
+        grid-template-columns: 1fr;
+    }
+
+    #contact {
+        padding: 44px 20px;
+    }
+}
