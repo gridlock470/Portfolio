@@ -16,6 +16,7 @@ body {
     background-color: #fffdf7;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 a {
@@ -68,6 +69,24 @@ nav ul a:hover,
 nav ul a:focus-visible,
 nav ul a[aria-current="page"] {
     color: #b07b0b;
+}
+
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d7b95f;
+    border-radius: 50%;
+    color: #8a5f07;
+    background-color: #fffdf7;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    transform: rotate(12deg) scale(1.06);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.65), 0 0 22px rgba(218, 165, 32, 0.35);
 }
 
 
@@ -134,7 +153,10 @@ section {
     color: #ffffff;
     background-color: #b88718;
     font-weight: 700;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .hero-actions a:last-child {
@@ -147,6 +169,10 @@ section {
     color: #ffffff;
     background-color: #8a5f07;
     transform: translateY(-2px);
+    box-shadow:
+        0 0 10px rgba(184, 135, 24, 0.65),
+        0 0 24px rgba(184, 135, 24, 0.45),
+        0 8px 20px rgba(111, 78, 10, 0.25);
 }
 
 
@@ -222,6 +248,98 @@ footer {
 }
 
 
+/* ---------- Void-black dark theme ---------- */
+
+html[data-theme="dark"] body {
+    color: #f4ead0;
+    background-color: #000000;
+}
+
+html[data-theme="dark"] header {
+    background-color: rgba(0, 0, 0, 0.96);
+    border-bottom-color: #6f4d00;
+    box-shadow: 0 2px 18px rgba(255, 190, 35, 0.16);
+}
+
+html[data-theme="dark"] .logo,
+html[data-theme="dark"] nav ul a:hover,
+html[data-theme="dark"] nav ul a:focus-visible,
+html[data-theme="dark"] nav ul a[aria-current="page"],
+html[data-theme="dark"] .hero > p:first-child,
+html[data-theme="dark"] #highlights h3,
+html[data-theme="dark"] #contact a {
+    color: #ffd34e;
+    text-shadow: 0 0 12px rgba(255, 196, 32, 0.55);
+}
+
+html[data-theme="dark"] nav ul a {
+    color: #f3ead2;
+}
+
+html[data-theme="dark"] .theme-toggle {
+    color: #ffd34e;
+    background-color: #090909;
+    border-color: #d9a514;
+    box-shadow: 0 0 12px rgba(255, 196, 32, 0.25);
+}
+
+html[data-theme="dark"] .hero h1,
+html[data-theme="dark"] #highlights > h2 {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .hero h2 {
+    color: #e7c96e;
+}
+
+html[data-theme="dark"] .hero h2 + p,
+html[data-theme="dark"] #highlights p {
+    color: #c9c1ad;
+}
+
+html[data-theme="dark"] .hero-actions a {
+    color: #080600;
+    background-color: #ffc629;
+    border-color: #ffc629;
+}
+
+html[data-theme="dark"] .hero-actions a:last-child {
+    color: #ffd34e;
+    background-color: transparent;
+}
+
+html[data-theme="dark"] .hero-actions a:hover,
+html[data-theme="dark"] .hero-actions a:focus-visible {
+    color: #000000;
+    background-color: #ffe17a;
+    box-shadow: 0 0 12px rgba(255, 207, 58, 0.9), 0 0 30px rgba(255, 190, 25, 0.62);
+}
+
+html[data-theme="dark"] #highlights article {
+    color: #f3ead2;
+    background-color: #090909;
+    border-color: #5f470d;
+    box-shadow: 0 10px 30px rgba(255, 190, 25, 0.08);
+}
+
+html[data-theme="dark"] #contact {
+    color: #dfd4b9;
+    background: linear-gradient(135deg, #050505, #120e03);
+    border-color: #8e690c;
+    box-shadow: 0 0 30px rgba(255, 190, 25, 0.12);
+}
+
+html[data-theme="dark"] #contact h2 {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] footer {
+    color: #bcb39f;
+    background-color: #050505;
+    border-top-color: #5d450c;
+}
+
+
 /* ---------- Mobile layout ---------- */
 
 @media (max-width: 768px) {
@@ -235,6 +353,12 @@ footer {
         flex-wrap: wrap;
         justify-content: center;
         gap: 12px 20px;
+    }
+
+    .theme-toggle {
+        position: absolute;
+        top: 14px;
+        right: 5%;
     }
 
     .hero {
