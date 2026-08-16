@@ -179,24 +179,42 @@ section {
 /* ---------- Areas of interest ---------- */
 
 #highlights {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
     gap: 24px;
 }
 
 #highlights > h2 {
-    grid-column: 1 / -1;
+    flex: 0 0 100%;
     margin-bottom: 8px;
     color: #211d14;
     font-size: 2rem;
 }
 
 #highlights article {
+    min-width: 0;
+    min-height: 260px;
     padding: 28px;
     border: 1px solid #ead9a9;
     border-radius: 12px;
     background-color: #ffffff;
     box-shadow: 0 10px 25px rgba(111, 78, 10, 0.08);
+    flex: 0.72 1 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease,
+        border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#highlights article:hover,
+#highlights article:focus-visible,
+#highlights article:focus-within {
+    flex-grow: 1.8;
+    outline: none;
+    transform: translateY(-6px);
+    border-color: #d5a91b;
+    box-shadow: 0 14px 36px rgba(184, 135, 24, 0.18);
 }
 
 #highlights h3 {
@@ -205,6 +223,85 @@ section {
 }
 
 #highlights p {
+    color: #746a53;
+}
+
+.card-details {
+    width: min(430px, 70vw);
+    opacity: 0.42;
+    transform: translateX(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#highlights article:hover .card-details,
+#highlights article:focus-visible .card-details,
+#highlights article:focus-within .card-details {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.card-details ul {
+    max-height: 0;
+    margin-top: 18px;
+    padding-left: 20px;
+    overflow: hidden;
+    color: #6b5b34;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+#highlights article:hover .card-details ul,
+#highlights article:focus-visible .card-details ul,
+#highlights article:focus-within .card-details ul {
+    max-height: 150px;
+    opacity: 1;
+}
+
+.card-details li + li {
+    margin-top: 6px;
+}
+
+/* ---------- Current focus ---------- */
+
+#current-focus {
+    border-top: 1px solid #ead9a9;
+}
+
+.section-label {
+    color: #a87308;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+#current-focus > h2 {
+    margin: 6px 0 30px;
+    color: #211d14;
+    font-size: 2rem;
+}
+
+.focus-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.focus-list article {
+    padding: 26px 0;
+    border-top: 2px solid #d5a91b;
+}
+
+.focus-list span {
+    color: #b88718;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.focus-list h3 {
+    margin: 10px 0 8px;
+}
+
+.focus-list p {
     color: #746a53;
 }
 
@@ -284,7 +381,8 @@ html[data-theme="dark"] .theme-toggle {
 }
 
 html[data-theme="dark"] .hero h1,
-html[data-theme="dark"] #highlights > h2 {
+html[data-theme="dark"] #highlights > h2,
+html[data-theme="dark"] #current-focus > h2 {
     color: #ffffff;
 }
 
@@ -293,7 +391,8 @@ html[data-theme="dark"] .hero h2 {
 }
 
 html[data-theme="dark"] .hero h2 + p,
-html[data-theme="dark"] #highlights p {
+html[data-theme="dark"] #highlights p,
+html[data-theme="dark"] .focus-list p {
     color: #c9c1ad;
 }
 
@@ -320,6 +419,31 @@ html[data-theme="dark"] #highlights article {
     background-color: #090909;
     border-color: #5f470d;
     box-shadow: 0 10px 30px rgba(255, 190, 25, 0.08);
+}
+
+html[data-theme="dark"] #highlights article:hover,
+html[data-theme="dark"] #highlights article:focus-visible,
+html[data-theme="dark"] #highlights article:focus-within {
+    border-color: #ffc629;
+    box-shadow: 0 0 16px rgba(255, 198, 41, 0.24), 0 18px 42px rgba(255, 190, 25, 0.12);
+}
+
+html[data-theme="dark"] .card-details ul {
+    color: #d7ccb0;
+}
+
+html[data-theme="dark"] #current-focus {
+    border-top-color: #5f470d;
+}
+
+html[data-theme="dark"] .section-label,
+html[data-theme="dark"] .focus-list span {
+    color: #ffd34e;
+    text-shadow: 0 0 12px rgba(255, 196, 32, 0.5);
+}
+
+html[data-theme="dark"] .focus-list article {
+    border-top-color: #ffc629;
 }
 
 html[data-theme="dark"] #contact {
@@ -367,6 +491,23 @@ html[data-theme="dark"] footer {
     }
 
     #highlights {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    #highlights article {
+        min-height: auto;
+    }
+
+    .card-details,
+    .card-details ul {
+        width: auto;
+        max-height: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .focus-list {
         grid-template-columns: 1fr;
     }
 
